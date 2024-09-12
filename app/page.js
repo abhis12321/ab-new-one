@@ -1,17 +1,16 @@
-import axios from 'axios';
-// const url = `https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=${process.env.API_KEY}`;
-const url = `https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=1855f8ce894cbf07951326030e9fb99b`;
+import { articles } from './__components/articles';
+import NewsCard from './__components/NewsCard';
+const url = `https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=${process.env.API_KEY}`;
+// const url = `https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=20&apikey=1855f8ce894cbf07951326030e9fb99b`;
 
 export default async function page() {
-  const data = await fetch(url)
-                          .then(res => res.json())
-                          .then(data => data.articles);
-  console.log(data);
-  
+  // const data = await fetch(url)
+  //                         .then(res => res.json())
+  //                         .then(data => data.articles);  
   return (
-    <div className="">
+    <div className="flex flex-wrap p-4 gap-4 itemscenter justify-center bg-gray-100">
       {
-        data?.map((news , index) => <div key={index}>hello</div>)
+        articles?.map((news , index) => <NewsCard key={index} article={news}>hello</NewsCard>)
       }
     </div>
   )
